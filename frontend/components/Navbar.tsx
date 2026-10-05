@@ -7,6 +7,7 @@ import { CloseIcon, MenuIcon } from "@/components/Icons";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
+  { label: "Home", href: "/#" },
   { label: "How it works", href: "/#how-it-works" },
   { label: "Blood types", href: "/#blood-types" },
   { label: "Why donate", href: "/#why-donate" },
