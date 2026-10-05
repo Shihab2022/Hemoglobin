@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsx watch src/server.ts",
+    "build": "prisma generate && tsup",
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +29,7 @@
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^26.6.4",
     "@types/nodemailer": "^8.0.2",
+    "ts-node": "^10.9.2",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   }
