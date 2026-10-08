@@ -1,0 +1,124 @@
+/**
+ * Shared domain types for NagorikSheba / একসেবা.
+ *
+ * All data consumed by the UI is MOCK/DEMO data until a backend is
+ * connected. The shapes below mirror what a real API would return so
+ * swapping mock data for live endpoints later requires no UI changes.
+ */
+
+export type ServiceCategory = {
+  id: string;
+  name: string;
+  slug: string;
+  description: string;
+  /** Lucide icon name (kept as a string so data stays serializable). */
+  icon: string;
+  serviceCount: number;
+  /** Sample sub-services shown on the category card. */
+  samples: string[];
+  /** Which subtle accent tint the card uses. */
+  accent: "green" | "red";
+};
+
+export type GovernmentService = {
+  id: string;
+  name: string;
+  slug: string;
+  /** Category slug this service belongs to. */
+  category: string;
+  /** Owning ministry / department display name. */
+  department: string;
+  description: string;
+  longDescription?: string;
+  eligibility?: string[];
+  requiredDocuments?: string[];
+  fee?: string;
+  processingTime?: string;
+  /** Ordered steps of the application procedure. */
+  steps?: string[];
+  authority?: string;
+  officeLocations?: string[];
+  /** Absolute URL of the official government portal. Never a fake URL. */
+  officialUrl?: string;
+  /** ISO date the entry was last reviewed by an editor. */
+  lastVerifiedAt?: string;
+  /** Whether the service can be completed online end-to-end. */
+  isOnline: boolean;
+  /** Whether the applicant must visit an office in person. */
+  requiresOfficeVisit: boolean;
+  popularity: number;
+  icon: string;
+  /** Relative publish/update label used on cards, e.g. "Updated 2 days ago". */
+  updatedLabel?: string;
+};
+
+export type OfficeType =
+  | "passport"
+  | "land"
+  | "brta"
+  | "police"
+  | "hospital"
+  | "tax"
+  | "city-corporation"
+  | "municipality"
+  | "union-parishad"
+  | "court";
+
+export type GovernmentOffice = {
+  id: string;
+  name: string;
+  type: OfficeType;
+  typeLabel: string;
+  division: string;
+  district: string;
+  upazila: string;
+  address: string;
+  services: string[];
+  openingHours: string;
+  contact: string;
+  /** Official website when one exists for the office type. */
+  officialUrl?: string;
+  /** Latitude/longitude placeholder for a future map integration. */
+  coordinates?: { lat: number; lng: number };
+  icon: string;
+};
+
+export type NoticeCategory =
+  | "nid"
+  | "passport"
+  | "tax"
+  | "education"
+  | "land"
+  | "transport"
+  | "health";
+
+export type GovernmentNotice = {
+  id: string;
+  title: string;
+  category: NoticeCategory;
+  department: string;
+  /** ISO date string. */
+  publishedAt: string;
+  summary: string;
+  body: string[];
+  officialUrl?: string;
+  readMinutes: number;
+};
+
+export type FaqItem = {
+  id: string;
+  question: string;
+  answer: string;
+  category: "general" | "services" | "account" | "data";
+};
+
+export type SearchResultType = "service" | "office" | "notice" | "document";
+
+export type SearchResult = {
+  id: string;
+  type: SearchResultType;
+  title: string;
+  description: string;
+  href: string;
+  badge?: string;
+};

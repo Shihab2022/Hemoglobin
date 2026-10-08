@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, Noto_Sans_Bengali } from "next/font/google";
 import "./globals.css";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -8,53 +10,57 @@ const inter = Inter({
   display: "swap",
 });
 
-const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
-  subsets: ["latin"],
+const bangla = Noto_Sans_Bengali({
+  variable: "--font-bangla",
+  subsets: ["bengali"],
   display: "swap",
 });
 
-const SITE_URL = "https://hemoglobin.org";
+const SITE_URL = "https://nagoriksheba.example";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Hemoglobin — Blood Donation Network",
-    template: "%s | Hemoglobin",
+    default: "NagorikSheba — বাংলাদেশের সরকারি সেবার এক ঠিকানা",
+    template: "%s | NagorikSheba",
   },
   description:
-    "Hemoglobin connects blood donors with hospitals and patients in need. Register as a donor, find nearby blood requests, and save up to three lives with a single donation.",
-  applicationName: "Hemoglobin",
+    "NagorikSheba (একসেবা) helps citizens discover Bangladesh government services — eligibility, required documents, fees, step-by-step procedures, offices, notices and official links in one place.",
+  applicationName: "NagorikSheba",
   keywords: [
-    "blood donation",
-    "blood bank",
-    "donate blood",
-    "blood group",
-    "find blood donors",
-    "Hemoglobin",
+    "NagorikSheba",
+    "একসেবা",
+    "Bangladesh government services",
+    "সরকারি সেবা",
+    "NID",
+    "e-Passport",
+    "e-TIN",
+    "driving license",
+    "land mutation",
+    "government offices Bangladesh",
   ],
-  authors: [{ name: "Hemoglobin" }],
-  creator: "Hemoglobin",
+  authors: [{ name: "NagorikSheba" }],
+  creator: "NagorikSheba",
   openGraph: {
     type: "website",
     url: SITE_URL,
-    siteName: "Hemoglobin",
-    title: "Hemoglobin — Blood Donation Network",
+    siteName: "NagorikSheba",
+    title: "NagorikSheba — Bangladesh Government Services, One Place",
     description:
-      "One donation can save up to three lives. Register as a donor and get matched with nearby blood requests.",
+      "Find the government service you need, understand the process, and access the official service.",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hemoglobin — Blood Donation Network",
+    title: "NagorikSheba — Bangladesh Government Services, One Place",
     description:
-      "One donation can save up to three lives. Register as a donor and get matched with nearby blood requests.",
+      "Find the government service you need, understand the process, and access the official service.",
   },
   robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#E11D48",
+  themeColor: "#004D3A",
   width: "device-width",
   initialScale: 1,
 };
@@ -62,13 +68,22 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
-      className={`${inter.variable} ${jakarta.variable} h-full scroll-smooth antialiased`}
+      lang="bn"
+      className={`${inter.variable} ${bangla.variable} h-full scroll-smooth antialiased`}
     >
       <body className="flex min-h-full flex-col bg-white font-sans text-slate-900">
-        {children}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2.5 focus:text-sm focus:font-bold focus:text-brand-800 focus:shadow-lg"
+        >
+          Skip to main content
+        </a>
+        <Navbar />
+        <main id="main-content" className="flex-1">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
 }
-

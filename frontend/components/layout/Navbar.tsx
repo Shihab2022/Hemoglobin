@@ -1,0 +1,156 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { Menu, Search, UserRound } from "lucide-react";
+import { Logo } from "@/components/ui/Logo";
+import { MobileMenu } from "@/components/layout/MobileMenu";
+import { cn } from "@/lib/utils";
+
+const NAV_LINKS = [
+  { label: "Services", href: "/services", bn: "সেবা" },
+  { label: "How It Works", href: "/how-it-works", bn: "কীভাবে কাজ করে" },
+  { label: "Government Offices", href: "/government-offices", bn: "সরকারি অফিস" },
+  { label: "Notices", href: "/notices", bn: "নোটিশ" },
+  { label: "Help", href: "/faq", bn: "সাহায্য" },
+];
+
+export function Navbar() {
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [lang, setLang] = useState<"bn" | "en">("bn");
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Close the drawer when the viewport grows back to desktop.
+  useEffect(() => {
+    if (!open) return;
+    const onResize = () => {
+      if (window.innerWidth >= 1024) setOpen(false);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [open]);
+
+  // Close the drawer on navigation.
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  return (
+    <header
+      className={cn(
+        "sticky top-0 z-50 w-full bg-brand-700 transition-shadow duration-300",
+        scrolled ? "shadow-lg shadow-brand-900/20" : "",
+      )}
+    >
+      {/* thin flag-red accent line */}
+      <div className="h-[3px] w-full bg-flag-500" aria-hidden="true" />
+
+      <nav
+        aria-label="Main"
+        className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:h-[72px] lg:px-8"
+      >
+        <Logo tone="light" />
+
+        <ul className="hidden items-center gap-0.5 xl:flex">
+          {NAV_LINKS.map((link) => {
+            const active =
+              pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
+            return (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  aria-current={active ? "page" : undefined}
+                  className={cn(
+                    "group relative rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                    active ? "text-white" : "text-brand-50/80 hover:text-white",
+                  )}
+                >
+                  {link.label}
+                  <span
+                    aria-hidden="true"
+                    className={cn(
+                      "absolute inset-x-3 -bottom-0.5 h-0.5 origin-left rounded-full bg-flag-500 transition-transform duration-250",
+                      active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100",
+                    )}
+                  />
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+
+        <div className="flex items-center gap-1.5 sm:gap-2">
+          <Link
+            href="/search"
+            aria-label="Search services"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-brand-50/90 transition-colors hover:bg-white/10 hover:text-white"
+          >
+            <Search className="h-5 w-5" aria-hidden="true" />
+          </Link>
+
+          {/* Language toggle (visual preference — full i18n is a future step) */}
+          <div
+            className="hidden items-center rounded-lg bg-white/10 p-0.5 text-xs font-bold sm:flex"
+            role="group"
+            aria-label="Language"
+          >
+            <button
+              type="button"
+              aria-pressed={lang === "bn"}
+              onClick={() => setLang("bn")}
+              className={cn(
+                "rounded-md px-2.5 py-1.5 transition-colors",
+                lang === "bn" ? "bg-white text-brand-800" : "text-brand-50/80 hover:text-white",
+              )}
+            >
+              বাংলা
+            </button>
+            <button
+              type="button"
+              aria-pressed={lang === "en"}
+              onClick={() => setLang("en")}
+              className={cn(
+                "rounded-md px-2.5 py-1.5 transition-colors",
+                lang === "en" ? "bg-white text-brand-800" : "text-brand-50/80 hover:text-white",
+              )}
+            >
+              EN
+            </button>
+          </div>
+
+          <Link
+            href="/login"
+            className="hidden h-10 items-center gap-1.5 rounded-lg bg-white px-4 text-sm font-bold text-brand-800 shadow-sm transition-all hover:bg-brand-50 hover:shadow md:inline-flex"
+          >
+            <UserRound className="h-4 w-4" aria-hidden="true" />
+            Login
+          </Link>
+
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-brand-50 transition-colors hover:bg-white/10 xl:hidden"
+          >
+            <Menu className="h-6 w-6" aria-hidden="true" />
+          </button>
+        </div>
+      </nav>
+
+      <MobileMenu open={open} onClose={() => setOpen(false)} links={NAV_LINKS} lang={lang} />
+    </header>
+  );
+}
+
+export default Navbar;
