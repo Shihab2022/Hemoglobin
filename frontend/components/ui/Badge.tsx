@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-type Tone = "green" | "red" | "slate" | "soft-green" | "soft-red" | "amber";
+type Tone = "green" | "red" | "slate" | "soft-green" | "soft-red" | "amber" | "outline" | "soft-amber";
 
 const TONES: Record<Tone, string> = {
   green: "bg-brand-600 text-white",
@@ -10,6 +10,8 @@ const TONES: Record<Tone, string> = {
   "soft-red": "bg-flag-50 text-flag-700 ring-1 ring-flag-100",
   slate: "bg-slate-100 text-slate-600 ring-1 ring-slate-200",
   amber: "bg-amber-50 text-amber-700 ring-1 ring-amber-200",
+  outline: "bg-white text-slate-600 ring-1 ring-slate-200",
+  "soft-amber": "bg-amber-50 text-amber-700 ring-1 ring-amber-200",
 };
 
 export function Badge({
