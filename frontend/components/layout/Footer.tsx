@@ -90,7 +90,7 @@ export function Footer() {
         <div className="mt-12 rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6">
           <div className="flex items-start gap-3">
             <span className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-flag-500 text-white">
-              <AlertCircle className="h-4.5 w-4.5" aria-hidden="true" />
+              <AlertCircle className="h-[18px] w-[18px]" aria-hidden="true" />
             </span>
             <div>
               <h2 className="text-sm font-bold text-white">Important</h2>

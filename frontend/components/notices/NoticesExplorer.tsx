@@ -52,7 +52,7 @@ export function NoticesExplorer() {
           Search notices
         </label>
         <div className="relative">
-          <Search className="pointer-events-none absolute top-1/2 left-4 h-4.5 w-4.5 -translate-y-1/2 text-slate-400" aria-hidden="true" />
+          <Search className="pointer-events-none absolute top-1/2 left-4 h-[18px] w-[18px] -translate-y-1/2 text-slate-400" aria-hidden="true" />
           <input
             id="notice-search"
             type="search"

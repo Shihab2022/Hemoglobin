@@ -65,7 +65,7 @@ export function ChatWidget() {
           <label htmlFor="ai-input" className="sr-only">Ask about a government service</label>
           <input id="ai-input" value={input} onChange={(e) => setInput(e.target.value)} placeholder="Ask about documents, fees, steps..."
             className="h-11 flex-1 rounded-xl border border-line bg-canvas px-4 text-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-100 focus:outline-none" />
-          <Button type="submit" size="icon" aria-label="Send message"><SendHorizonal className="h-4.5 w-4.5" aria-hidden="true" /></Button>
+          <Button type="submit" size="icon" aria-label="Send message"><SendHorizonal className="h-[18px] w-[18px]" aria-hidden="true" /></Button>
         </form>
       </div>
     </div>

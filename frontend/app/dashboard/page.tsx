@@ -32,7 +32,7 @@ export default function DashboardPage() {
           <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
             {QUICK.map((q) => (
               <Link key={q.label} href={q.href}
-                className="group flex items-center gap-3 rounded-2xl border border-line bg-white p-4 shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-cardHover">
+                className="group flex items-center gap-3 rounded-2xl border border-line bg-white p-4 shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-card-hover">
                 <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-600 text-white transition-transform duration-300 group-hover:scale-105">
                   <q.icon className="h-5 w-5" aria-hidden="true" />
                 </span>
@@ -69,7 +69,7 @@ export default function DashboardPage() {
           <aside className="space-y-5">
             <section aria-labelledby="dash-recent" className="rounded-2xl border border-line bg-white p-5 shadow-card">
               <h2 id="dash-recent" className="flex items-center gap-2 text-sm font-extrabold text-slate-900">
-                <History className="h-4.5 w-4.5 text-brand-600" aria-hidden="true" /> Recent Searches
+                <History className="h-[18px] w-[18px] text-brand-600" aria-hidden="true" /> Recent Searches
               </h2>
               <ul className="mt-3 space-y-2">
                 {["passport renewal", "NID correction", "land mutation"].map((t) => (
@@ -81,7 +81,7 @@ export default function DashboardPage() {
             </section>
             <section aria-labelledby="dash-notif" className="rounded-2xl border border-line bg-white p-5 shadow-card">
               <h2 id="dash-notif" className="flex items-center gap-2 text-sm font-extrabold text-slate-900">
-                <Bell className="h-4.5 w-4.5 text-brand-600" aria-hidden="true" /> Notifications
+                <Bell className="h-[18px] w-[18px] text-brand-600" aria-hidden="true" /> Notifications
               </h2>
               <ul className="mt-3 space-y-2.5 text-sm leading-6 text-slate-500">
                 <li className="rounded-xl bg-brand-50/70 px-3.5 py-2.5"><strong className="font-bold text-slate-800">Tax filing reminder:</strong> e-Return deadline is approaching.</li>

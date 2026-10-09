@@ -78,7 +78,7 @@ export default function HowItWorksPage() {
               <span className="relative z-10 inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand-600 text-base font-extrabold text-white shadow-card sm:h-16 sm:w-16">
                 {phase.step}
               </span>
-              <div className="flex-1 rounded-2xl border border-line bg-white p-5 shadow-card transition-shadow duration-300 hover:shadow-cardHover sm:p-7">
+              <div className="flex-1 rounded-2xl border border-line bg-white p-5 shadow-card transition-shadow duration-300 hover:shadow-card-hover sm:p-7">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
                     <Icon name={phase.icon} className="h-5 w-5" />

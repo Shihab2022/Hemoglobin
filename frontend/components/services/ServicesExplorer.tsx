@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Search, SearchX, SlidersHorizontal } from "lucide-react";
+import { Search, SearchX, SlidersHorizontal, ChevronDown } from "lucide-react";
 import { SERVICES, getServiceDepartments } from "@/lib/data/services";
 import { CATEGORIES } from "@/lib/data/categories";
 import { ServiceCard } from "@/components/services/ServiceCard";
@@ -22,6 +22,7 @@ export function ServicesExplorer({ initialQuery = "" }: { initialQuery?: string 
   const [availability, setAvailability] = useState("all");
   const [sort, setSort] = useState<SortKey>("popular");
   const [loading, setLoading] = useState(false);
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   const departments = useMemo(() => getServiceDepartments(), []);
 
@@ -57,6 +58,12 @@ export function ServicesExplorer({ initialQuery = "" }: { initialQuery?: string 
   const hasFilters =
     category !== "all" || department !== "all" || availability !== "all" || query !== "";
 
+  const activeFilterCount =
+    (category !== "all" ? 1 : 0) +
+    (department !== "all" ? 1 : 0) +
+    (availability !== "all" ? 1 : 0) +
+    (query.trim() !== "" ? 1 : 0);
+
   function clearAll() {
     setQuery("");
     setCategory("all");
@@ -66,25 +73,56 @@ export function ServicesExplorer({ initialQuery = "" }: { initialQuery?: string 
 
   return (
     <div className="grid gap-6 lg:grid-cols-[280px_1fr] lg:items-start">
-      <aside
-        aria-label="Service filters"
-        className="rounded-2xl border border-line bg-white p-5 shadow-card lg:sticky lg:top-28"
-      >
-        <div className="flex items-center justify-between gap-2">
-          <h2 className="flex items-center gap-2 text-sm font-bold text-slate-900">
+      {/* Filters: collapsible panel on mobile, sticky sidebar on desktop */}
+      <div className="lg:sticky lg:top-28">
+        <button
+          type="button"
+          onClick={() => setFiltersOpen((v) => !v)}
+          aria-expanded={filtersOpen}
+          aria-controls="service-filters"
+          className="flex w-full items-center justify-between gap-2 rounded-2xl border border-line bg-white px-4 py-3 text-sm font-bold text-slate-900 shadow-card transition-colors hover:border-brand-300 lg:hidden"
+        >
+          <span className="flex items-center gap-2">
             <SlidersHorizontal className="h-4 w-4 text-brand-600" aria-hidden="true" />
             Filters
-          </h2>
-          {hasFilters ? (
-            <button
-              type="button"
-              onClick={clearAll}
-              className="text-xs font-bold text-flag-600 hover:text-flag-700"
-            >
-              Clear all
-            </button>
-          ) : null}
-        </div>
+            {activeFilterCount > 0 ? (
+              <span className="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-600 px-1.5 text-xs font-bold text-white">
+                {activeFilterCount}
+              </span>
+            ) : null}
+          </span>
+          <ChevronDown
+            className={cn(
+              "h-4 w-4 text-slate-400 transition-transform duration-200",
+              filtersOpen && "rotate-180",
+            )}
+            aria-hidden="true"
+          />
+        </button>
+
+        <aside
+          id="service-filters"
+          aria-label="Service filters"
+          className={cn(
+            "mt-3 rounded-2xl border border-line bg-white p-5 shadow-card lg:mt-0 lg:block",
+            filtersOpen ? "block" : "hidden",
+          )}
+        >
+          <div className="flex items-center justify-between gap-2">
+            <h2 className="hidden items-center gap-2 text-sm font-bold text-slate-900 lg:flex">
+              <SlidersHorizontal className="h-4 w-4 text-brand-600" aria-hidden="true" />
+              Filters
+            </h2>
+            {hasFilters ? (
+              <button
+                type="button"
+                onClick={clearAll}
+                className="text-xs font-bold text-flag-600 hover:text-flag-700 lg:ml-auto"
+              >
+                Clear all
+              </button>
+            ) : null}
+          </div>
 
         <div className="relative mt-4">
           <Search
@@ -161,6 +199,8 @@ export function ServicesExplorer({ initialQuery = "" }: { initialQuery?: string 
           </Select>
         </div>
       </aside>
+      </div>
+
       {/* Results */}
       <div>
         <div

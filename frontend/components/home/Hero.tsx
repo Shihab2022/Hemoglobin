@@ -72,7 +72,7 @@ export function Hero() {
                 className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-white px-6 text-base font-bold text-brand-800 shadow-lg transition-all hover:-translate-y-0.5 hover:bg-brand-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 সেবা খুঁজুন
-                <ArrowRight className="h-4.5 w-4.5" aria-hidden="true" />
+                <ArrowRight className="h-[18px] w-[18px]" aria-hidden="true" />
               </Link>
               <Link
                 href="/how-it-works"

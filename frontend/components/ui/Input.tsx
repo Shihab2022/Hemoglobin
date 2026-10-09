@@ -4,6 +4,7 @@ import type {
   SelectHTMLAttributes,
   TextareaHTMLAttributes,
 } from "react";
+import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const FIELD_BASE =
@@ -32,9 +33,15 @@ export function Select({
   ...props
 }: SelectHTMLAttributes<HTMLSelectElement>) {
   return (
-    <select className={cn(FIELD_BASE, "h-12 appearance-none pr-9", className)} {...props}>
-      {children}
-    </select>
+    <div className="relative w-full">
+      <select className={cn(FIELD_BASE, "h-12 appearance-none pr-9", className)} {...props}>
+        {children}
+      </select>
+      <ChevronDown
+        className="pointer-events-none absolute top-1/2 right-3 h-4 w-4 -translate-y-1/2 text-slate-400"
+        aria-hidden="true"
+      />
+    </div>
   );
 }
 

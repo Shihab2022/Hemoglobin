@@ -105,7 +105,7 @@ export function MobileMenu({
               onClick={onClose}
               className="flex items-center gap-3 rounded-xl px-4 py-3.5 text-sm font-semibold text-brand-50/85 transition-colors hover:bg-white/5 hover:text-white"
             >
-              <Search className="h-4.5 w-4.5" aria-hidden="true" />
+              <Search className="h-[18px] w-[18px]" aria-hidden="true" />
               Search services
             </Link>
             <Link
@@ -113,7 +113,7 @@ export function MobileMenu({
               onClick={onClose}
               className="flex items-center gap-3 rounded-xl px-4 py-3.5 text-sm font-semibold text-brand-50/85 transition-colors hover:bg-white/5 hover:text-white"
             >
-              <LayoutDashboard className="h-4.5 w-4.5" aria-hidden="true" />
+              <LayoutDashboard className="h-[18px] w-[18px]" aria-hidden="true" />
               Dashboard
             </Link>
             <Link
@@ -121,7 +121,7 @@ export function MobileMenu({
               onClick={onClose}
               className="flex items-center gap-3 rounded-xl px-4 py-3.5 text-sm font-semibold text-brand-50/85 transition-colors hover:bg-white/5 hover:text-white"
             >
-              <FileSearch className="h-4.5 w-4.5" aria-hidden="true" />
+              <FileSearch className="h-[18px] w-[18px]" aria-hidden="true" />
               Document Checklist
             </Link>
           </div>

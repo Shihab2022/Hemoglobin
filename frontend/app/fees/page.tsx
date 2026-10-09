@@ -23,9 +23,9 @@ export default function FeesPage() {
         <div className="mb-6"><DemoNote /></div>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.slice(0, 12).map((s) => (
-            <article key={s.id} className="group rounded-2xl border border-line bg-white p-5 shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:shadow-cardHover sm:p-6">
+            <article key={s.id} className="group rounded-2xl border border-line bg-white p-5 shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:shadow-card-hover sm:p-6">
               <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-700 transition-transform duration-300 group-hover:scale-105">
-                <Icon name={s.icon} className="h-5.5 w-5.5" />
+                <Icon name={s.icon} className="h-[22px] w-[22px]" />
               </span>
               <h2 className="mt-3 text-base font-extrabold text-slate-900">{s.name}</h2>
               <p className="mt-1 text-2xl font-extrabold tracking-tight text-brand-700">{s.fee ?? "—"}</p>

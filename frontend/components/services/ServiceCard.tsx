@@ -36,7 +36,7 @@ export function ServiceCard({
               {service.isOnline ? "Online Service" : "Office Service"}
             </Badge>
           </div>
-          <h3 className="mt-2 truncate text-base font-bold text-slate-900 transition-colors group-hover:text-brand-700">
+          <h3 className="mt-2 text-base font-bold text-slate-900 transition-colors group-hover:text-brand-700">
             <Link href={`/services/${service.slug}`} className="after:absolute after:inset-0">
               {service.name}
             </Link>

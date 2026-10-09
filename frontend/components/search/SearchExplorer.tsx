@@ -84,7 +84,7 @@ export function SearchExplorer({ initialQuery }: { initialQuery: string }) {
           <Search className="pointer-events-none absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 text-slate-400" aria-hidden="true" />
           <input id="global-search" type="search" value={query} onChange={(e) => setQuery(e.target.value)}
             placeholder="Search government services, documents, offices and notices..." autoComplete="off"
-            className="h-13 w-full rounded-xl border border-line bg-canvas py-3.5 pr-4 pl-12 text-[15px] text-slate-900 placeholder:text-slate-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 focus:outline-none" />
+            className="h-[52px] w-full rounded-xl border border-line bg-canvas py-3.5 pr-4 pl-12 text-[15px] text-slate-900 placeholder:text-slate-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 focus:outline-none" />
         </div>
         <div className="mt-3">
           <Tabs tabs={TABS.map((t) => ({ value: t.value, label: t.label, count: counts[t.value as keyof typeof counts] ?? 0 }))} defaultValue="all" onChange={setTab} size="sm" />
@@ -97,7 +97,7 @@ export function SearchExplorer({ initialQuery }: { initialQuery: string }) {
       {filtered.length > 0 ? (
         <ul className="mt-4 space-y-3">
           {filtered.slice(0, 30).map((r) => (
-            <li key={`${r.type}-${r.id}`} className="group rounded-2xl border border-line bg-white p-4 shadow-card transition-all duration-300 hover:border-brand-200 hover:shadow-cardHover sm:p-5">
+            <li key={`${r.type}-${r.id}`} className="group relative rounded-2xl border border-line bg-white p-4 shadow-card transition-all duration-300 hover:border-brand-200 hover:shadow-card-hover sm:p-5">
               <div className="flex flex-wrap items-center gap-2">
                 <Badge tone={r.type === "service" ? "soft-green" : r.type === "notice" ? "soft-red" : r.type === "document" ? "soft-amber" : "outline"}>{r.type}</Badge>
                 {r.badge ? <span className="text-xs font-medium text-slate-400">{r.badge}</span> : null}

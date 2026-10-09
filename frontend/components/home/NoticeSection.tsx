@@ -76,7 +76,7 @@ export function NoticeSection() {
                     </div>
 
                     <h3 className="mt-3 text-base font-bold leading-6 text-slate-900 transition-colors group-hover:text-brand-700">
-                      <Link href={`/notices/${notice.id}`} className="after:absolute after:inset-0">
+                      <Link href={`/notices/${notice.id}`} className="after:absolute after:inset-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600">
                         {notice.title}
                       </Link>
                     </h3>

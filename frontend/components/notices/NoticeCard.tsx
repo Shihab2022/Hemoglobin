@@ -6,7 +6,7 @@ import { formatNoticeDate, publishedLabel } from "@/lib/data/notices";
 /** Notice teaser card for the directory listing. */
 export function NoticeCard({ notice }: { notice: GovernmentNotice }) {
   return (
-    <article className="group flex flex-col rounded-2xl border border-line bg-white p-5 shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-cardHover sm:p-6">
+    <article className="group relative flex flex-col rounded-2xl border border-line bg-white p-5 shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-card-hover sm:p-6">
       <span className="inline-flex w-fit items-center gap-1.5 rounded-lg bg-flag-50 px-2.5 py-1 text-[11px] font-extrabold tracking-widest text-flag-600 uppercase">
         Notice
       </span>

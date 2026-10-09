@@ -150,7 +150,7 @@ export function OfficeFinder() {
         <Reveal>
           <div className="mt-8 flex flex-col items-center justify-between gap-4 rounded-2xl bg-brand-50 px-5 py-4 ring-1 ring-brand-100 sm:flex-row">
             <p className="flex items-center gap-2 text-sm font-semibold text-brand-800">
-              <MapPinned className="h-4.5 w-4.5" aria-hidden="true" />
+              <MapPinned className="h-[18px] w-[18px]" aria-hidden="true" />
               {OFFICES.length} demo offices across Bangladesh in this prototype.
             </p>
             <Link

@@ -40,6 +40,8 @@
   --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 10px 30px -14px rgb(15 23 42 / 0.14);
   --shadow-lift: 0 2px 4px rgb(15 23 42 / 0.05), 0 18px 40px -16px rgb(0 106 78 / 0.22);
   --shadow-redlift: 0 2px 4px rgb(15 23 42 / 0.05), 0 18px 40px -16px rgb(244 42 65 / 0.2);
+  /* Alias used by cards/lists for the hover-elevated state */
+  --shadow-card-hover: 0 2px 4px rgb(15 23 42 / 0.05), 0 18px 40px -16px rgb(0 106 78 / 0.22);
 
   /* Motion */
   --animate-fade-up: fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;

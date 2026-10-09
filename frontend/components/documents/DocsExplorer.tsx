@@ -33,7 +33,7 @@ export function DocsExplorer() {
               <button type="button" role="option" aria-selected={s.id === svc?.id} onClick={() => { setSel(s.id); setDone([]); }}
                 className={cn("flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-left text-sm font-semibold transition-colors",
                   s.id === svc?.id ? "bg-brand-600 text-white" : "text-slate-600 hover:bg-slate-100")}>
-                <Icon name={s.icon} className="h-4.5 w-4.5 shrink-0" />
+                <Icon name={s.icon} className="h-[18px] w-[18px] shrink-0" />
                 <span className="truncate">{s.name}</span>
               </button>
             </li>
@@ -60,7 +60,7 @@ export function DocsExplorer() {
                 <li key={d}>
                   <label className={cn("flex cursor-pointer items-start gap-3 rounded-xl border px-4 py-3 text-sm font-medium transition-colors",
                     checked ? "border-brand-200 bg-brand-50/60 text-slate-500 line-through" : "border-line bg-canvas text-slate-700 hover:border-brand-200")}>
-                    <input type="checkbox" checked={checked} onChange={() => setDone((p) => checked ? p.filter((x) => x !== d) : [...p, d])} className="mt-0.5 h-4.5 w-4.5 shrink-0 accent-[#006A4E]" />
+                    <input type="checkbox" checked={checked} onChange={() => setDone((p) => checked ? p.filter((x) => x !== d) : [...p, d])} className="mt-0.5 h-[18px] w-[18px] shrink-0 accent-[#006A4E]" />
                     <span className="inline-flex items-start gap-2"><CheckSquare className="mt-0.5 h-4 w-4 shrink-0 text-brand-600" aria-hidden="true" />{d}</span>
                   </label>
                 </li>

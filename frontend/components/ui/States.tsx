@@ -84,7 +84,7 @@ export function SuccessNote({
         className,
       )}
     >
-      <CheckCircle2 className="mt-0.5 h-4.5 w-4.5 shrink-0" aria-hidden="true" />
+      <CheckCircle2 className="mt-0.5 h-[18px] w-[18px] shrink-0" aria-hidden="true" />
       {children}
     </p>
   );
