@@ -20,6 +20,9 @@
     "express": "^5.2.1",
     "http-status": "^2.1.0",
     "jsonwebtoken": "^9.0.3",
+    "node-pg-migrate": "^9.0.0",
+    "pg": "^8.23.1",
+    "postgrator": "^8.0.0",
     "tsup": "^8.5.1"
   },
   "devDependencies": {
@@ -29,6 +32,7 @@
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^26.6.4",
     "@types/nodemailer": "^8.0.2",
+    "@types/pg": "^8.23.1",
     "ts-node": "^10.9.2",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
